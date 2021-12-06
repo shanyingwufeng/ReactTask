@@ -6,9 +6,27 @@ import "./index.less";
 
 function User() {
     const navigate = useNavigate();
-    const [column, setColumn] = useState(
-        JSON.parse(localStorage.getItem("userTableColumn"))
-    );
+    // const [column, setColumn] = useState(
+    //     JSON.parse(localStorage.getItem("userTableColumn"))
+    // );
+    const column = [
+        {
+            keyName: "username",
+            valueName: "用户名",
+        },
+        {
+            keyName: "name",
+            valueName: "姓名",
+        },
+        {
+            keyName: "email",
+            valueName: "用户名",
+        },
+        {
+            keyName: "operator",
+            valueName: "操作",
+        },
+    ];
     // const column = JSON.parse(localStorage.getItem("userTableColumn"));
     const [userTableData, setUserTableData] = useState(
         JSON.parse(localStorage.getItem("userTableData"))
