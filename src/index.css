@@ -25,15 +25,14 @@ a {
   font-weight: 700;
   cursor: pointer;
 }
-.header .nav {
-  display: flex;
-}
 .header .nav a:first-child {
   margin-right: 20px;
 }
 .header .nav .index,
 .header .nav .userManage {
-  color: #385dc1;
+  padding-bottom: 4px;
+  color: #2e68d3;
+  border-bottom: 2px solid #2e68d3;
 }
 .container {
   display: flex;
