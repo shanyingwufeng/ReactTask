@@ -31,8 +31,9 @@ a {
 .header .nav a:first-child {
   margin-right: 20px;
 }
-.header .nav a:hover {
-  color: #2961d4;
+.header .nav .index,
+.header .nav .userManage {
+  color: #385dc1;
 }
 .container {
   display: flex;

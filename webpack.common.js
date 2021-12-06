@@ -1,14 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// less/less module 正则表达式
-const lessRegex = /\.less$/;
-const lessModuleRegex = /\.module\.less$/;
 const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
 
 module.exports = (env) => {
     return {
         mode: "development",
-        // mode: "production",
         entry: {
             index: "./src/index.js",
         },
@@ -17,7 +13,7 @@ module.exports = (env) => {
             path: path.resolve(__dirname, "dist/"),
         },
         resolve: {
-            extensions: [".ts", ".js"], // 注意有个点，别看走眼
+            extensions: [".ts", ".js"],
         },
         plugins: [
             // 生成 index.html
@@ -34,8 +30,8 @@ module.exports = (env) => {
                     include: path.resolve(__dirname, "src"),
                 },
                 {
-                    test: lessRegex,
-                    exclude: lessModuleRegex,
+                    test: /\.less$/,
+                    exclude: /\.module\.less$/,
                     use: [
                         "style-loader",
                         "css-loader",
@@ -45,7 +41,7 @@ module.exports = (env) => {
                     sideEffects: true,
                 },
                 {
-                    test: lessModuleRegex,
+                    test: /\.module\.less$/,
                     use: [
                         "style-loader",
                         {
@@ -69,13 +65,13 @@ module.exports = (env) => {
         devServer: {
             port: 3000,
             host: "0.0.0.0",
-            historyApiFallback: true,
+            historyApiFallback: true, // 可以直接通过 url 访问
         },
         cache: {
             type: "filesystem",
             // 可选配置
             buildDependencies: {
-                config: [__filename], // 当构建依赖的config文件（通过 require 依赖）内容发生变化时，缓存失效
+                config: [__filename], // 当构建依赖的 config 文件（通过 require 依赖）内容发生变化时，缓存失效
             },
             name: "development-cache",
         },

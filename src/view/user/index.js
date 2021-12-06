@@ -9,6 +9,7 @@ function User() {
     const [column, setColumn] = useState(
         JSON.parse(localStorage.getItem("userTableColumn"))
     );
+    // const column = JSON.parse(localStorage.getItem("userTableColumn"));
     const [userTableData, setUserTableData] = useState(
         JSON.parse(localStorage.getItem("userTableData"))
     );
@@ -25,7 +26,7 @@ function User() {
             }
         } else if (operator === "编辑") {
             console.log("编辑的用户是：" + name + "，序号是：" + index);
-            navigate('addUser', {state: {index: index}});
+            navigate("addUser", { state: { index: index } });
         }
     };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, Link, Outlet } from "react-router-dom";
 import Home from "./view/home";
 import User from "./view/user";
@@ -21,6 +21,8 @@ function App() {
 }
 
 function Layout() {
+    const [menuNum, setMenuNum] = useState(1);
+
     return (
         <>
             <div className="header">
@@ -28,8 +30,20 @@ function Layout() {
                     Task
                 </Link>
                 <div className="nav">
-                    <Link to="/">首页</Link>
-                    <Link to="/user">用户管理</Link>
+                    <Link
+                        to="/"
+                        className={menuNum === 1 ? "index" : ""}
+                        onClick={() => setMenuNum(1)}
+                    >
+                        首页
+                    </Link>
+                    <Link
+                        to="/user"
+                        className={menuNum === 2 ? "userManage" : ""}
+                        onClick={() => setMenuNum(2)}
+                    >
+                        用户管理
+                    </Link>
                 </div>
             </div>
             <div className="container">
